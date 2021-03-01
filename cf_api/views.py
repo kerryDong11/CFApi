@@ -3,6 +3,9 @@
 import json
 from django.shortcuts import render, HttpResponse
 
+from rest_framework import viewsets
+from .models import Student
+from .serializers import StudentSerializers
 
 class PythonWebDemo(object):
     @staticmethod
@@ -17,3 +20,10 @@ class PythonWebDemo(object):
         sample = json.dumps(data)
         #sample = json.dumps(data)
         return HttpResponse(sample, content_type="application/json")
+
+class StudentViewSet(viewsets.ModelViewSet):
+
+    # 指定结果集并设置排序
+    queryset = Student.objects.all().order_by('-pk')
+    # 指定序列化的类
+    serializer_class = StudentSerializers

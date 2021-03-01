@@ -18,9 +18,12 @@ from django.urls import path
 from django.conf.urls import url
 from django.views.generic.base import TemplateView
 import cf_api.views
+
+from django.urls import path,include
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^webtest/', cf_api.views.PythonWebDemo.webtest),
     # path(r'',TemplateView.as_view(template_name="index.html"))
-
+    path('', include('cf_api.urls')),    #添加的路由地址
 ]
