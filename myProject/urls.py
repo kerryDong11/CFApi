@@ -23,7 +23,7 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^webtest/', cf_api.views.PythonWebDemo.webtest),
+    #url(r'^webtest/', cf_api.views.PythonWebDemo.webtest),
     # path(r'',TemplateView.as_view(template_name="index.html"))
-    path('', include('cf_api.urls')),    #添加的路由地址
+    path('up/', include('cf_api.urls')),    #添加的路由地址
 ]

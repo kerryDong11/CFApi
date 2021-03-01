@@ -1,13 +1,19 @@
 from django.db import models
 
 # Create your models here.
-class Person(models.Model):
-    name = models.CharField(max_length=30)
-    age = models.IntegerField()
- 
+class User(models.Model):
+    u_account = models.CharField(max_length=32,unique=True)
+    u_id = models.CharField(max_length=256,unique=True)
+    u_password = models.CharField(max_length=30,default='sf1234')
+    u_authority = models.CharField(max_length=256)
+    u_department = models.CharField(max_length=30)
+    u_name = models.CharField(max_length=32)
+    is_delete = models.BooleanField(default=False)
+    u_telephone = models.CharField(max_length=32)
+
     def __unicode__(self):
         # 在Python3中使用 def __str__(self):
-        return self.name
+         return '%d: %s' % (self.pk, self.u_account)
 
 
 
@@ -18,3 +24,4 @@ class Student(models.Model):
  
     def __unicode__(self):
         return '%d: %s' % (self.pk, self.name)
+
